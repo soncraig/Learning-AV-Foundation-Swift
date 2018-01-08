@@ -74,8 +74,11 @@ class SampleDataFilter {
     func maxValue(in values: [Int16]) -> Int16 {
         var maxValue: Int16 = 0
         for i in 0..<values.count {
-            if abs(values[i]) > maxValue {
-                maxValue = abs(values[i])
+            let value = values[i]
+            if value <= Int16.min {
+                return Int16.max
+            } else if abs(value) > maxValue {
+                maxValue = abs(value)
             }
         }
         return maxValue
